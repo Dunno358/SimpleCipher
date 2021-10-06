@@ -1,4 +1,5 @@
 import pygame
+from pygame import rect
 from pygame.locals import *
 import os
 from datetime import datetime
@@ -91,13 +92,16 @@ class Start():
     def chooseAction():
         optImg = pygame.image.load(r"{}\Pictures\mainoptrect-300x70.jpg".format(dirPath))
         optImg = pygame.transform.scale(optImg, [int(size_w/2.75),int(size_h/8.8)])
-        optionRect1 = CustomRect(optImg,[size_w/3.2,size_h/3.31])
+        
+        opt1 = CustomRect(optImg,[size_w/3.2,size_h/3.31])
+        opt1R = opt1.get_rect()
+        optRect1 = pygame.draw.rect(screen, start.color('purple'),[size_w/3.2,size_h/3.31,opt1R[2],opt1R[3]],size_w//120)
         Write(48,"Cipher",start.color("black"),[size_w/2.02,size_h/2.72])
 
-        optionRect2 = CustomRect(optImg,[size_w/3.2,size_h/2.14])
-        optionRect2_text = Write(48,"Decipher",start.color("black"),[size_w/2.02,size_h/1.89])
-        screen.blit(optionRect2.imageRect,optionRect2.rect)
-        screen.blit(optionRect2_text.writeText,optionRect2_text.textRect)
+        opt2 = CustomRect(optImg,[size_w/3.2,size_h/2.14])
+        opt2R = opt2.get_rect()
+        optRect1 = pygame.draw.rect(screen, start.color('purple'),[size_w/3.2,size_h/2.14,opt1R[2],opt1R[3]],size_w//120)
+        Write(48,"Decipher",start.color("black"),[size_w/2.02,size_h/1.89])
     def quit():
         for event in pygame.event.get():
             if event.type == QUIT:
